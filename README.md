@@ -54,3 +54,39 @@ Example
     
 You will need to add QuartzCore framework. This component use ARC.
 For cusomization see SIMenuConfiguration .h/.m files.
+
+Build with CocoaPods
+=============
+
+Install CocoaPods. see: http://cocoapods.org/
+
+Demo
+---------
+
+```
+cd /path/to/work
+git https://github.com/iwazer/NavigationMenu.git
+cd NavigationMenu
+pod install
+open NavigationMenu.xcworkspace
+```
+
+Press Run button.
+
+Use own project
+---------
+
+```shell:terminal
+cd /path/to/your/project
+vi Podfile
+```
+
+```ruby:Podfile
+platform :ios,'5.0'
+pod 'SINavigationMenuView', :git => 'https://github.com/iwazer/NavigationMenu.git', :branch => 'pods-support'
+```
+
+```shell:terminal
+pod install
+open your_project.xcworkspace
+```
