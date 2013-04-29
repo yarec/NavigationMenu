@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "SINavigationMenuView"
-  s.version      = "0.1.0"
+  s.version      = "1.0.1"
   #s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.summary      = "UIWebView progress interface."
   s.homepage     = "https://github.com/iSapozhnik/NavigationMenu"
