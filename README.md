@@ -83,7 +83,7 @@ vi Podfile
 
 ```ruby:Podfile
 platform :ios,'5.0'
-pod 'SINavigationMenuView', :git => 'https://github.com/iwazer/NavigationMenu.git', :branch => 'pods-support'
+pod 'SINavigationMenuView', :git => 'https://github.com/iwazer/NavigationMenu.git', :tag => 'v1.0.1'
 ```
 
 ```shell:terminal
