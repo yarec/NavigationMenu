@@ -15,6 +15,7 @@
 @property (nonatomic, strong) SIMenuButton *menuButton;
 @property (nonatomic, strong) SIMenuTable *table;
 @property (nonatomic, strong) UIView *menuContainer;
+@property (nonatomic, strong) NSString *title;
 @end
 
 @implementation SINavigationMenuView
@@ -25,7 +26,7 @@
     if (self) {
         frame.origin.y += 1.0;
         self.menuButton = [[SIMenuButton alloc] initWithFrame:frame];
-        self.menuButton.title.text = title;
+        self.menuButton.title.text = _title = title;
         [self.menuButton addTarget:self action:@selector(onHandleMenuTap:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.menuButton];
     }
@@ -35,6 +36,15 @@
 - (void)displayMenuInView:(UIView *)view
 {
     self.menuContainer = view;
+}
+
+- (void)setTitle:(NSString *)title;
+{
+    if (title) {
+        self.menuButton.title.text = title;
+    } else {
+        self.menuButton.title.text = _title;
+    }
 }
 
 #pragma mark -
@@ -83,7 +93,7 @@
 {
     self.menuButton.isActive = !self.menuButton.isActive;
     [self onHandleMenuTap:nil];
-    [self.delegate didSelectItemAtIndex:index];
+  [self.delegate didSelectItem:self atIndex:index];
 }
 
 - (void)didBackgroundTap
