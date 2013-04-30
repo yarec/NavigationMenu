@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "SIMenuTable.h"
 
+@class SINavigationMenuView;
+
 @protocol SINavigationMenuDelegate <NSObject>
 
-- (void)didSelectItemAtIndex:(NSUInteger)index;
+- (void)didSelectItem:(SINavigationMenuView *)menuView atIndex:(NSUInteger)index;
 
 @end
 
@@ -22,5 +24,6 @@
 
 - (id)initWithFrame:(CGRect)frame title:(NSString *)title;
 - (void)displayMenuInView:(UIView *)view;
+- (void)setTitle:(NSString *)title;
 
 @end
