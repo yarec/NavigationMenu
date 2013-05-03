@@ -45,6 +45,7 @@
     } else {
         self.menuButton.title.text = _title;
     }
+    [self.menuButton layoutSubviews];
 }
 
 #pragma mark -
@@ -93,7 +94,7 @@
 {
     self.menuButton.isActive = !self.menuButton.isActive;
     [self onHandleMenuTap:nil];
-  [self.delegate didSelectItem:self atIndex:index];
+    [self.delegate didSelectItem:self atIndex:index];
 }
 
 - (void)didBackgroundTap
