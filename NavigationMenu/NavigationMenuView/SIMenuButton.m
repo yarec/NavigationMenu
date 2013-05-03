@@ -50,10 +50,11 @@
     [self.title sizeToFit];
     CGFloat titleWdith = CGRectGetMaxX(self.title.frame);
     CGSize size = self.bounds.size;
-    if (titleWdith > size.width) {
-        [self.title setFrame:CGRectMake(0.0, 0.0, size.width, size.height)];
+    CGFloat allowWidth = size.width - self.arrow.frame.size.width;
+    if (titleWdith > allowWidth) {
+        [self.title setFrame:CGRectMake(0.0, 0.0, allowWidth, size.height)];
     }
-    self.title.center = CGPointMake(self.frame.size.width/2, (self.frame.size.height-2.0)/2);
+    self.title.center = CGPointMake(self.frame.size.width/2 - self.arrow.frame.size.width/2, (self.frame.size.height-2.0)/2);
     self.arrow.center = CGPointMake(CGRectGetMaxX(self.title.frame) + [SIMenuConfiguration arrowPadding], self.frame.size.height / 2);
 }
 
