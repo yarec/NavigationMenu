@@ -45,6 +45,7 @@
     } else {
         self.menuButton.title.text = _title;
     }
+    [self.menuButton layoutSubviews];
 }
 
 #pragma mark -
