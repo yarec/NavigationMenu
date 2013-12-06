@@ -95,6 +95,11 @@
     [self.table hide];
 }
 
+- (void)hideMenu
+{
+    [self onHideMenu];
+}
+
 - (void)rotateArrow:(float)degrees
 {
     [UIView animateWithDuration:[SIMenuConfiguration animationDuration] delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{

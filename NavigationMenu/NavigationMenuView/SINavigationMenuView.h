@@ -26,5 +26,6 @@
 - (id)initWithFrame:(CGRect)frame title:(NSString *)title fullScreen:(BOOL)fullScreen;
 - (void)displayMenuInView:(UIView *)view;
 - (void)setTitle:(NSString *)title;
+- (void)hideMenu;
 
 @end
