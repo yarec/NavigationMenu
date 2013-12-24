@@ -152,7 +152,12 @@
     
     cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
-    cell.textLabel.text = [self.items objectAtIndex:indexPath.row];
+    NSObject *text = [self.items objectAtIndex:indexPath.row];
+    if ([text isKindOfClass:[NSAttributedString class]]) {
+        cell.textLabel.attributedText = (NSAttributedString *)text;
+    } else {
+        cell.textLabel.text = (NSString *)text;
+    }
     
     return cell;
 }

@@ -22,10 +22,10 @@
 @property (nonatomic, weak) id <SINavigationMenuDelegate> delegate;
 @property (nonatomic, strong) NSArray *items;
 
-- (id)initWithFrame:(CGRect)frame title:(NSString *)title;
-- (id)initWithFrame:(CGRect)frame title:(NSString *)title fullScreen:(BOOL)fullScreen;
+- (id)initWithFrame:(CGRect)frame title:(NSObject *)title;
+- (id)initWithFrame:(CGRect)frame title:(NSObject *)title fullScreen:(BOOL)fullScreen;
 - (void)displayMenuInView:(UIView *)view;
-- (void)setTitle:(NSString *)title;
+- (void)setTitle:(NSObject *)title;
 - (void)hideMenu;
 
 @end

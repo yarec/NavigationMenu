@@ -15,18 +15,18 @@
 @property (nonatomic, strong) SIMenuButton *menuButton;
 @property (nonatomic, strong) SIMenuTable *table;
 @property (nonatomic, strong) UIView *menuContainer;
-@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSObject *title;
 @property (nonatomic, assign) BOOL fullScreen;
 @end
 
 @implementation SINavigationMenuView
 
-- (id)initWithFrame:(CGRect)frame title:(NSString *)title
+- (id)initWithFrame:(CGRect)frame title:(NSObject *)title
 {
     return [self initWithFrame:frame title:title fullScreen:NO];
 }
 
-- (id)initWithFrame:(CGRect)frame title:(NSString *)title fullScreen:(BOOL)fullScreen
+- (id)initWithFrame:(CGRect)frame title:(NSObject *)title fullScreen:(BOOL)fullScreen
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -36,8 +36,15 @@
         if (fullScreen) {
             [self.menuButton.arrow removeFromSuperview]; // hide arrow since we cover full screen to avoid issues when back in navigation is clicked.
         }
+
+        _title = title;
         
-        self.menuButton.title.text = _title = title;
+        if ([title isKindOfClass:[NSAttributedString class]]) {
+            self.menuButton.title.attributedText = (NSAttributedString *)title;
+        } else {
+            self.menuButton.title.text = (NSString *)title;
+        }
+        
         [self.menuButton addTarget:self action:@selector(onHandleMenuTap:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.menuButton];
     }
@@ -49,12 +56,20 @@
     self.menuContainer = view;
 }
 
-- (void)setTitle:(NSString *)title;
+- (void)setTitle:(NSObject *)title;
 {
     if (title) {
-        self.menuButton.title.text = title;
+        if ([title isKindOfClass:[NSAttributedString class]]) {
+            self.menuButton.title.attributedText = (NSAttributedString *)title;
+        } else {
+            self.menuButton.title.text = (NSString *)title;
+        }
     } else {
-        self.menuButton.title.text = _title;
+        if ([_title isKindOfClass:[NSAttributedString class]]) {
+            self.menuButton.title.attributedText =  (NSAttributedString *)_title;
+        } else {
+            self.menuButton.title.text = (NSString *)_title;
+        }
     }
     [self.menuButton layoutSubviews];
 }
@@ -113,7 +128,7 @@
 {
     self.menuButton.isActive = !self.menuButton.isActive;
     [self onHandleMenuTap:nil];
-    [self.delegate didSelectItem:self atIndex:index];
+  [self.delegate didSelectItem:self atIndex:index];
 }
 
 - (void)didBackgroundTap
