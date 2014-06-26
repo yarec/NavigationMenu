@@ -51,13 +51,13 @@
 - (void)layoutSubviews
 {
     [self.title sizeToFit];
-    CGFloat titleWdith = CGRectGetMaxX(self.title.frame);
+    CGFloat titleWdith = self.title.frame.size.width;
     CGSize size = self.bounds.size;
     CGFloat allowWidth = size.width;
     if (titleWdith > allowWidth) {
-        [self.title setFrame:CGRectMake(0.0, 0.0, allowWidth, size.height)];
+        [self.title setFrame:CGRectMake(0.0, 0.0, allowWidth, self.title.frame.size.height)];
     }
-    self.title.center = CGPointMake(self.frame.size.width/2, (self.frame.size.height-2.0)/2 + 1);
+    self.title.center = CGPointMake(self.center.x, self.center.y-2.0f);
     self.arrow.center = CGPointMake(self.title.center.x, CGRectGetMaxY(self.title.frame)+ [SIMenuConfiguration arrowPadding]);
 }
 
