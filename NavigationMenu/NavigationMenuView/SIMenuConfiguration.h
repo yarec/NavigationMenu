@@ -47,4 +47,11 @@
 
 //Selection color
 + (UIColor *)selectionColor;
+
+//UITableViewCellSeparatorStyle
++(UITableViewCellSeparatorStyle)itemCellSeperatorStyle;
+
+//UITableViewCellSeparatorColor
++(UIColor *)itemCellSeperatorColor;
+
 @end

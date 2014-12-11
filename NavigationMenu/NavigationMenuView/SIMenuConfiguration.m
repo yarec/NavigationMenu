@@ -37,7 +37,7 @@
 //Menu alpha value
 + (float)menuAlpha
 {
-    return 0.8;
+    return 0.0;
 }
 
 //Value of bounce
@@ -55,18 +55,18 @@
 //Distance between Title and arrow image
 + (float)arrowPadding
 {
-    return 3.0;
+    return 13.0;
 }
 
 //Items color in menu
 + (UIColor *)itemsColor
 {
-    return [UIColor blackColor];
+    return [UIColor whiteColor];
 }
 
 + (UIColor *)mainColor
 {
-    return [UIColor blackColor];
+    return [UIColor whiteColor];
 }
 
 + (float)selectionSpeed
@@ -76,11 +76,20 @@
 
 + (UIColor *)itemTextColor
 {
-    return [UIColor whiteColor];
+    return [UIColor colorWithRed:0.0/255.0 green:156.0/255.0 blue:173.0/255.0 alpha:1.0];
 }
 
 + (UIColor *)selectionColor
 {
-    return [UIColor colorWithRed:45.0/255.0 green:105.0/255.0 blue:166.0/255.0 alpha:1.0];
+    return [UIColor whiteColor];
 }
+
++(UITableViewCellSeparatorStyle)itemCellSeperatorStyle{
+    return UITableViewCellSeparatorStyleSingleLine;
+}
+
++(UIColor *)itemCellSeperatorColor{
+    return [UIColor colorWithRed:0.0/255.0 green:156.0/255.0 blue:173.0/255.0 alpha:1.0];
+}
+
 @end

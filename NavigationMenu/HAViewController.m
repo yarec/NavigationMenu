@@ -17,13 +17,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     if (self.navigationItem) {
         CGRect frame = CGRectMake(0.0, 0.0, 240.0, self.navigationController.navigationBar.bounds.size.height);
         SINavigationMenuView *menu = [[SINavigationMenuView alloc] initWithFrame:frame title:@"Menu"];
         [menu displayMenuInView:self.navigationController.view];
         menu.items = @[@"News", @"Top Articles", @"Messages", @"Account", @"Settings",
                        @"Long Long Long Long Long Long Long Long Long String",
-                       @"Return to Initial Value"];
+                       @"Return to Initial Value", @"Top Articles", @"Top Articles", @"Top Articles", @"Top Articles", @"Top Articles", @"Top Articles", @"Top Articles"];
         menu.delegate = self;
         self.navigationItem.titleView = menu;
     }

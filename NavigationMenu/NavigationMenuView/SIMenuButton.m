@@ -15,15 +15,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        if ([self defaultGradient]) {
-            
-        } else {
-            [self setSpotlightCenter:CGPointMake(frame.size.width/2, frame.size.height*(-1)+10)];
-            [self setBackgroundColor:[UIColor clearColor]];
-            [self setSpotlightStartRadius:0];
-            [self setSpotlightEndRadius:frame.size.width/2];
-        }
-        
+        [self setBackgroundColor:[UIColor clearColor]];
         frame.origin.y -= 2.0;
         self.title = [[UILabel alloc] initWithFrame:frame];
         self.title.textAlignment = NSTextAlignmentCenter;
@@ -36,9 +28,11 @@
         self.title.shadowOffset = shadowOffset.CGSizeValue;
         [self addSubview:self.title];
 
+        /*
         self.arrow = [[UIImageView alloc] initWithImage:[SIMenuConfiguration arrowImage]];
-        self.arrow.bounds = CGRectMake(0, 0, 8, 8);
         [self addSubview:self.arrow];
+         */
+        
     }
     return self;
 }
@@ -51,14 +45,17 @@
 - (void)layoutSubviews
 {
     [self.title sizeToFit];
-    CGFloat titleWdith = self.title.frame.size.width;
+    CGFloat titleWdith = CGRectGetMaxX(self.title.frame);
     CGSize size = self.bounds.size;
-    CGFloat allowWidth = size.width;
+    /*
+    CGFloat allowWidth = size.width - self.arrow.frame.size.width;
     if (titleWdith > allowWidth) {
-        [self.title setFrame:CGRectMake(0.0, 0.0, allowWidth, self.title.frame.size.height)];
+        [self.title setFrame:CGRectMake(0.0, 0.0, allowWidth, size.height)];
     }
-    self.title.center = CGPointMake(self.center.x, self.center.y-2.0f);
-    self.arrow.center = CGPointMake(self.title.center.x, CGRectGetMaxY(self.title.frame)+ [SIMenuConfiguration arrowPadding]);
+     */
+    //self.title.center = CGPointMake(self.frame.size.width/2 - self.arrow.frame.size.width/2, (self.frame.size.height-2.0)/2 + 1);
+     self.title.center = CGPointMake(self.frame.size.width/2, (self.frame.size.height-2.0)/2 + 1);
+    //self.arrow.center = CGPointMake(CGRectGetMaxX(self.title.frame) + [SIMenuConfiguration arrowPadding], self.frame.size.height / 2 - 1);
 }
 
 #pragma mark -
@@ -66,9 +63,6 @@
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
     self.isActive = !self.isActive;
-    CGGradientRef defaultGradientRef = [[self class] newSpotlightGradient];
-    [self setSpotlightGradientRef:defaultGradientRef];
-    CGGradientRelease(defaultGradientRef);
     return YES;
 }
 - (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event

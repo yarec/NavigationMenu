@@ -11,7 +11,6 @@
 #import "SIMenuConfiguration.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIColor+Extension.h"
-#import "SICellSelection.h"
 
 @interface SIMenuTable () {
     CGRect endFrame;
@@ -35,13 +34,15 @@
         
         endFrame = self.bounds;
         startFrame = endFrame;
+        endFrame.size.height -= 64;
         startFrame.origin.y -= self.items.count*[SIMenuConfiguration itemCellHeight];
         
         self.table = [[UITableView alloc] initWithFrame:startFrame style:UITableViewStylePlain];
         self.table.delegate = self;
         self.table.dataSource = self;
         self.table.backgroundColor = [UIColor clearColor];
-        self.table.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.table.separatorStyle = [SIMenuConfiguration itemCellSeperatorStyle];
+        self.table.separatorColor = [SIMenuConfiguration itemCellSeperatorColor];
         self.table.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         
         UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.table.bounds.size.height, [SIMenuConfiguration menuWidth], self.table.bounds.size.height)];
@@ -79,12 +80,11 @@
             self.layer.backgroundColor = [UIColor color:[SIMenuConfiguration mainColor] withAlpha:0.0].CGColor;
             self.table.frame = startFrame;
         } completion:^(BOOL finished) {
-//            [self.table deselectRowAtIndexPath:currentIndexPath animated:NO];
+            [self.table deselectRowAtIndexPath:currentIndexPath animated:NO];
             SIMenuCell *cell = (SIMenuCell *)[self.table cellForRowAtIndexPath:currentIndexPath];
             [cell setSelected:NO withCompletionBlock:^{
 
             }];
-            currentIndexPath = nil;
             [self removeFooter];
             [self.table removeFromSuperview];
             [self removeFromSuperview];
@@ -100,11 +100,14 @@
 
 - (void)addFooter
 {
-    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [SIMenuConfiguration menuWidth], self.table.bounds.size.height - (self.items.count * [SIMenuConfiguration itemCellHeight]))];
+    UIView *footer = [[UIView alloc] init];
+    footer.frame = (CGRectGetHeight(self.table.bounds) >= self.table.contentSize.height) ? CGRectMake(0, 0, [SIMenuConfiguration menuWidth], self.table.bounds.size.height - (self.items.count * [SIMenuConfiguration itemCellHeight]) - 64) : CGRectZero;
+
     self.table.tableFooterView = footer;
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onBackgroundTap:)];
     [footer addGestureRecognizer:tap];
+
 }
 
 - (void)removeFooter
@@ -159,6 +162,8 @@
         cell.textLabel.text = (NSString *)text;
     }
     
+    cell.accessoryType = ([currentIndexPath isEqual:indexPath]) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    
     return cell;
 }
 
@@ -166,21 +171,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    currentIndexPath = indexPath;
+    if (currentIndexPath) {
+        SIMenuCell *oldCell = (SIMenuCell *)[tableView cellForRowAtIndexPath:currentIndexPath];
+        oldCell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
+    currentIndexPath = indexPath;
     SIMenuCell *cell = (SIMenuCell *)[tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
     [cell setSelected:YES withCompletionBlock:^{
         [self.menuDelegate didSelectItemAtIndex:indexPath.row];
     }];
-    
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    SIMenuCell *cell = (SIMenuCell *)[tableView cellForRowAtIndexPath:indexPath];
-    [cell setSelected:NO withCompletionBlock:^{
-
-    }];
-}
 
 @end
