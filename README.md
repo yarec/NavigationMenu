@@ -1,5 +1,21 @@
 Navigation Menu for iOS
 =============
+
+Fork Changelog
+---------
+- remove arrow
+- mark choose item
+- remove gradient on tap
+- add configuration about cell separatorStyle and color
+- remove empty footer when items are more than one page
+
+- 移除箭頭
+- 標示上次點擊了哪個選項
+- 移除點擊的漸層效果
+- 新增 cell 的分隔線樣式和顏色
+- 移除當選項超過一頁時，最底下會出現的空白區域
+
+---------
 *Version 1.0*
 
 Navigation Menu is an Objective-C component that adds possibility to show menu from navigation bar.
