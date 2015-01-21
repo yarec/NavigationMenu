@@ -17,10 +17,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:nil];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     if (self.navigationItem) {
-        CGRect frame = CGRectMake(0.0, 0.0, 240.0, self.navigationController.navigationBar.bounds.size.height);
-        SINavigationMenuView *menu = [[SINavigationMenuView alloc] initWithFrame:frame title:@"Menu"];
+        CGRect frame = CGRectMake(0.0, 0.0, 200.0, self.navigationController.navigationBar.bounds.size.height);
+        NSAttributedString *title = [[NSAttributedString alloc] initWithString:@"All" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+        SINavigationMenuView *menu = [[SINavigationMenuView alloc] initWithFrame:frame title:title];
         [menu displayMenuInView:self.navigationController.view];
         menu.items = @[@"News", @"Top Articles", @"Messages", @"Account", @"Settings",
                        @"Long Long Long Long Long Long Long Long Long String",

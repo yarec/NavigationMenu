@@ -46,6 +46,7 @@
         }
         
         [self.menuButton addTarget:self action:@selector(onHandleMenuTap:) forControlEvents:UIControlEventTouchUpInside];
+        [self.menuButton sizeToFit];
         [self addSubview:self.menuButton];
     }
     return self;
@@ -100,26 +101,17 @@
         self.table.menuDelegate = self;
     }
     [self.menuContainer addSubview:self.table];
-    [self rotateArrow:M_PI];
     [self.table show];
 }
 
 - (void)onHideMenu
 {
-    [self rotateArrow:0];
     [self.table hide];
 }
 
 - (void)hideMenu
 {
     [self onHideMenu];
-}
-
-- (void)rotateArrow:(float)degrees
-{
-    [UIView animateWithDuration:[SIMenuConfiguration animationDuration] delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
-        self.menuButton.arrow.layer.transform = CATransform3DMakeRotation(degrees, 0, 0, 1);
-    } completion:NULL];
 }
 
 #pragma mark -

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4BDF95CF1A39913B000E2BA2 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BDF95CE1A39913A000E2BA2 /* images.xcassets */; };
 		D706CD6116D3E76D005D2B53 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D706CD6016D3E76D005D2B53 /* UIKit.framework */; };
 		D706CD6316D3E76D005D2B53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D706CD6216D3E76D005D2B53 /* Foundation.framework */; };
 		D706CD6516D3E76D005D2B53 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D706CD6416D3E76D005D2B53 /* CoreGraphics.framework */; };
@@ -22,19 +23,16 @@
 		D706CD8916D3F214005D2B53 /* SIMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D706CD8816D3F214005D2B53 /* SIMenuButton.m */; };
 		D706CD8C16D3FB0C005D2B53 /* SIMenuTable.m in Sources */ = {isa = PBXBuildFile; fileRef = D706CD8B16D3FB0C005D2B53 /* SIMenuTable.m */; };
 		D706CD8F16D40097005D2B53 /* SIMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D706CD8E16D40097005D2B53 /* SIMenuCell.m */; };
-		D721F09316D4E2D900397C1F /* arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = D721F09116D4E2D900397C1F /* arrow_down.png */; };
-		D721F09416D4E2D900397C1F /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D721F09216D4E2D900397C1F /* arrow_down@2x.png */; };
 		D721F09616D4E53600397C1F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D721F09516D4E53600397C1F /* QuartzCore.framework */; };
 		D721F09916D4F27B00397C1F /* SIMenuConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = D721F09816D4F27B00397C1F /* SIMenuConfiguration.m */; };
 		D75952C616D5123F001B694F /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D75952C516D5123F001B694F /* logo.png */; };
-		D75D641D16D62C7200B524FD /* arrow_down1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D75D641B16D62C7200B524FD /* arrow_down1@2x.png */; };
-		D75D641E16D62C7200B524FD /* arrow_down1.png in Resources */ = {isa = PBXBuildFile; fileRef = D75D641C16D62C7200B524FD /* arrow_down1.png */; };
 		D75D642016D6351200B524FD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D75D641F16D6351200B524FD /* README.md */; };
 		D75D642316D65EB100B524FD /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D75D642216D65EB100B524FD /* UIColor+Extension.m */; };
 		D75D642616D668AB00B524FD /* SICellSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = D75D642516D668AB00B524FD /* SICellSelection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4BDF95CE1A39913A000E2BA2 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 		D706CD5D16D3E76D005D2B53 /* NavigationMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavigationMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D706CD6016D3E76D005D2B53 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D706CD6216D3E76D005D2B53 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -59,14 +57,10 @@
 		D706CD8B16D3FB0C005D2B53 /* SIMenuTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIMenuTable.m; sourceTree = "<group>"; };
 		D706CD8D16D40097005D2B53 /* SIMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIMenuCell.h; sourceTree = "<group>"; };
 		D706CD8E16D40097005D2B53 /* SIMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIMenuCell.m; sourceTree = "<group>"; };
-		D721F09116D4E2D900397C1F /* arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_down.png; sourceTree = "<group>"; };
-		D721F09216D4E2D900397C1F /* arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_down@2x.png"; sourceTree = "<group>"; };
 		D721F09516D4E53600397C1F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D721F09716D4F27B00397C1F /* SIMenuConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIMenuConfiguration.h; sourceTree = "<group>"; };
 		D721F09816D4F27B00397C1F /* SIMenuConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIMenuConfiguration.m; sourceTree = "<group>"; };
 		D75952C516D5123F001B694F /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
-		D75D641B16D62C7200B524FD /* arrow_down1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_down1@2x.png"; sourceTree = "<group>"; };
-		D75D641C16D62C7200B524FD /* arrow_down1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_down1.png; sourceTree = "<group>"; };
 		D75D641F16D6351200B524FD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		D75D642116D65EB000B524FD /* UIColor+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extension.h"; sourceTree = "<group>"; };
 		D75D642216D65EB100B524FD /* UIColor+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extension.m"; sourceTree = "<group>"; };
@@ -150,7 +144,6 @@
 		D706CD8316D3E7A0005D2B53 /* NavigationMenuView */ = {
 			isa = PBXGroup;
 			children = (
-				D721F09016D4E2D900397C1F /* images */,
 				D75D642116D65EB000B524FD /* UIColor+Extension.h */,
 				D75D642216D65EB100B524FD /* UIColor+Extension.m */,
 				D706CD8416D3E857005D2B53 /* SINavigationMenuView.h */,
@@ -165,19 +158,9 @@
 				D75D642516D668AB00B524FD /* SICellSelection.m */,
 				D706CD8716D3F214005D2B53 /* SIMenuButton.h */,
 				D706CD8816D3F214005D2B53 /* SIMenuButton.m */,
+				4BDF95CE1A39913A000E2BA2 /* images.xcassets */,
 			);
 			path = NavigationMenuView;
-			sourceTree = "<group>";
-		};
-		D721F09016D4E2D900397C1F /* images */ = {
-			isa = PBXGroup;
-			children = (
-				D75D641B16D62C7200B524FD /* arrow_down1@2x.png */,
-				D75D641C16D62C7200B524FD /* arrow_down1.png */,
-				D721F09116D4E2D900397C1F /* arrow_down.png */,
-				D721F09216D4E2D900397C1F /* arrow_down@2x.png */,
-			);
-			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,11 +220,8 @@
 				D706CD7516D3E76D005D2B53 /* Default@2x.png in Resources */,
 				D706CD7716D3E76D005D2B53 /* Default-568h@2x.png in Resources */,
 				D706CD7D16D3E76D005D2B53 /* HAViewController.xib in Resources */,
-				D721F09316D4E2D900397C1F /* arrow_down.png in Resources */,
-				D721F09416D4E2D900397C1F /* arrow_down@2x.png in Resources */,
 				D75952C616D5123F001B694F /* logo.png in Resources */,
-				D75D641D16D62C7200B524FD /* arrow_down1@2x.png in Resources */,
-				D75D641E16D62C7200B524FD /* arrow_down1.png in Resources */,
+				4BDF95CF1A39913B000E2BA2 /* images.xcassets in Resources */,
 				D75D642016D6351200B524FD /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

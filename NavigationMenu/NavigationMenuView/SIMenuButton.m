@@ -19,20 +19,14 @@
         frame.origin.y -= 2.0;
         self.title = [[UILabel alloc] initWithFrame:frame];
         self.title.textAlignment = NSTextAlignmentCenter;
-        self.title.backgroundColor = [UIColor clearColor];
         NSDictionary *currentStyle = [[UINavigationBar appearance] titleTextAttributes];
         self.title.textColor = currentStyle[UITextAttributeTextColor];
         self.title.font = currentStyle[UITextAttributeFont];
-        self.title.shadowColor = currentStyle[UITextAttributeTextShadowColor];
-        NSValue *shadowOffset = currentStyle[UITextAttributeTextShadowOffset];
-        self.title.shadowOffset = shadowOffset.CGSizeValue;
-        [self addSubview:self.title];
 
-        /*
         self.arrow = [[UIImageView alloc] initWithImage:[SIMenuConfiguration arrowImage]];
-        [self addSubview:self.arrow];
-         */
+        [self.title addSubview:self.arrow];
         
+        [self addSubview:self.title];
     }
     return self;
 }
@@ -45,17 +39,11 @@
 - (void)layoutSubviews
 {
     [self.title sizeToFit];
-    CGFloat titleWdith = CGRectGetMaxX(self.title.frame);
-    CGSize size = self.bounds.size;
-    /*
-    CGFloat allowWidth = size.width - self.arrow.frame.size.width;
-    if (titleWdith > allowWidth) {
-        [self.title setFrame:CGRectMake(0.0, 0.0, allowWidth, size.height)];
-    }
-     */
-    //self.title.center = CGPointMake(self.frame.size.width/2 - self.arrow.frame.size.width/2, (self.frame.size.height-2.0)/2 + 1);
-     self.title.center = CGPointMake(self.frame.size.width/2, (self.frame.size.height-2.0)/2 + 1);
-    //self.arrow.center = CGPointMake(CGRectGetMaxX(self.title.frame) + [SIMenuConfiguration arrowPadding], self.frame.size.height / 2 - 1);
+    CGRect frame = self.title.frame;
+    frame.size.width += CGRectGetWidth(self.arrow.frame)*3;
+    self.title.frame = frame;
+    self.title.center = CGPointMake(self.frame.size.width/2, (self.frame.size.height-2.0)/2 + 1);
+    self.arrow.frame = CGRectMake(CGRectGetWidth(frame) - CGRectGetWidth(self.arrow.frame), CGRectGetHeight(frame) - CGRectGetHeight(self.arrow.frame) - 3.0, CGRectGetWidth(self.arrow.frame), CGRectGetHeight(self.arrow.frame));
 }
 
 #pragma mark -
@@ -68,58 +56,6 @@
 - (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
     return YES;
-}
-- (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
-{
-    self.spotlightGradientRef = nil;
-}
-- (void)cancelTrackingWithEvent:(UIEvent *)event
-{
-    self.spotlightGradientRef = nil;
-}
-
-#pragma mark - Drawing Override
-- (void)drawRect:(CGRect)rect
-{
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGGradientRef gradient = self.spotlightGradientRef;
-    float radius = self.spotlightEndRadius;
-    float startRadius = self.spotlightStartRadius;
-    CGContextDrawRadialGradient (context, gradient, self.spotlightCenter, startRadius, self.spotlightCenter, radius, kCGGradientDrawsAfterEndLocation);
-}
-
-
-#pragma mark - Factory Method
-
-+ (CGGradientRef)newSpotlightGradient
-{
-    size_t locationsCount = 2;
-    CGFloat locations[2] = {1.0f, 0.0f,};
-    CGFloat colors[12] = {0.0f,0.0f,0.0f,0.0f,
-        0.0f,0.0f,0.0f,0.55f};
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGGradientRef gradient = CGGradientCreateWithColorComponents(colorSpace, colors, locations, locationsCount);
-    CGColorSpaceRelease(colorSpace);
-    
-    return gradient;
-}
-
-- (void)setSpotlightGradientRef:(CGGradientRef)newSpotlightGradientRef
-{
-    CGGradientRelease(_spotlightGradientRef);
-    _spotlightGradientRef = nil;
-    
-    _spotlightGradientRef = newSpotlightGradientRef;
-    CGGradientRetain(_spotlightGradientRef);
-    
-    [self setNeedsDisplay];
-}
-
-#pragma mark - Deallocation
-
-- (void)dealloc
-{
-    [self setSpotlightGradientRef:nil];
 }
 
 @end
