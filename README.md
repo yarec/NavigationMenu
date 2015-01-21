@@ -3,13 +3,13 @@ Navigation Menu for iOS
 
 Fork Changelog
 ---------
-- remove arrow
+- replace arrow
 - mark choose item
 - remove gradient on tap
 - add configuration about cell separatorStyle and color
 - remove empty footer when items are more than one page
 
-- 移除箭頭
+- 美化UI
 - 標示上次點擊了哪個選項
 - 移除點擊的漸層效果
 - 新增 cell 的分隔線樣式和顏色
